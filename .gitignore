@@ -56,22 +56,22 @@ ConsolidatedSearchAPI/.vscode/*
 
 # Rider
 ConsolidatedSearchAPI/.idea/
-ConsolidatedSearchAPI/
+
 # Visual Studio
 ConsolidatedSearchAPI/.vs/
-ConsolidatedSearchAPI/
+
 # Fleet
 ConsolidatedSearchAPI/.fleet/
-ConsolidatedSearchAPI/
+
 # Code Rush
 ConsolidatedSearchAPI/.cr/
-ConsolidatedSearchAPI/
+
 # User-specific files
 ConsolidatedSearchAPI/*.suo
 ConsolidatedSearchAPI/*.user
 ConsolidatedSearchAPI/*.userosscache
 ConsolidatedSearchAPI/*.sln.docstates
-ConsolidatedSearchAPI/
+
 # Build results
 ConsolidatedSearchAPI/[Dd]ebug/
 ConsolidatedSearchAPI/[Dd]ebugPublic/
