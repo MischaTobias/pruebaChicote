@@ -8,9 +8,8 @@ class SearchService {
   SearchService({required this.baseUrl});
 
   Future<SearchApiResponse> fetchItems(String query, int page) async {
-    final response = await http.get(
-      Uri.parse('$baseUrl?query=$query&page=$page'),
-    );
+    final response =
+        await http.get(Uri.parse('$baseUrl?query=$query&page=$page'));
 
     if (response.statusCode == 200) {
       final jsonResponse = json.decode(response.body);

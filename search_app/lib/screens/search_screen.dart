@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/search_provider.dart';
-import '../services/search_service.dart'; // Adjust path if necessary
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
@@ -18,7 +17,7 @@ class SearchScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
-                  onChanged: (query) {
+                  onSubmitted: (query) {
                     provider.search(
                         query, 1); // Start with page 1 for a new query
                   },
@@ -37,28 +36,49 @@ class SearchScreen extends StatelessWidget {
               if (!provider.isLoading && provider.results.isNotEmpty)
                 Expanded(
                   child: ListView.builder(
-                    itemCount: provider.results.length +
-                        1, // Extra space for loading more
+                    itemCount: provider.results.length,
                     itemBuilder: (context, index) {
-                      if (index == provider.results.length) {
-                        // Load more if reached end of list
-                        provider.loadMoreResults();
-                        return const Center(child: CircularProgressIndicator());
-                      }
-
                       final item = provider.results[index];
                       return ListTile(
                         title: Text(item.title),
                         subtitle: Text(item.source),
                       );
                     },
-                    // Listen for scroll and load more results when scrolled to the bottom
-                    controller: provider.scrollController,
                   ),
                 ),
               // Empty message
               if (!provider.isLoading && provider.results.isEmpty)
                 const Center(child: Text('No results found')),
+
+              // Pagination Controls
+              if (!provider.isLoading && provider.results.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // Previous Button
+                      if (provider.currentPage > 1)
+                        ElevatedButton(
+                          onPressed: () {
+                            provider.loadPage(provider.currentPage - 1);
+                          },
+                          child: Text('Previous'),
+                        ),
+
+                      const SizedBox(width: 10),
+
+                      // Next Button
+                      if (provider.hasMoreResults)
+                        ElevatedButton(
+                          onPressed: () {
+                            provider.loadPage(provider.currentPage + 1);
+                          },
+                          child: Text('Next'),
+                        ),
+                    ],
+                  ),
+                ),
             ],
           );
         },

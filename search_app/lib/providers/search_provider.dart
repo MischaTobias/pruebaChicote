@@ -8,23 +8,25 @@ class SearchProvider extends ChangeNotifier {
   bool _isLoading = false;
   int _currentPage = 1;
   bool _hasMoreResults = true;
-  ScrollController scrollController = ScrollController();
+  String _currentQuery = ''; // Store the current query entered by the user
 
   SearchProvider({required this.searchService});
 
   List<SearchItem> get results => _results;
   bool get isLoading => _isLoading;
+  int get currentPage => _currentPage;
+  bool get hasMoreResults => _hasMoreResults;
 
   @override
   void dispose() {
-    scrollController.dispose();
     super.dispose();
   }
 
   // Method to initiate a new search with the query and page
   Future<void> search(String query, int page) async {
     _isLoading = true;
-    _currentPage = 1; // Reset page to 1 for new search
+    _currentPage = page; // Set to the page passed in the method
+    _currentQuery = query; // Store the query entered by the user
     _results.clear(); // Clear previous results
     _hasMoreResults = true; // Reset pagination
     notifyListeners();
@@ -43,20 +45,20 @@ class SearchProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Method to load more results when user scrolls to the bottom
-  Future<void> loadMoreResults() async {
-    if (!_hasMoreResults || _isLoading) return;
+  // Method to load results for a specific page
+  Future<void> loadPage(int page) async {
+    if (_isLoading) return;
 
     _isLoading = true;
-    _currentPage++;
+    _currentPage = page; // Update the current page
     notifyListeners();
 
     try {
       final response = await searchService.fetchItems(
-        'query', // Use the current search query here
+        _currentQuery, // Pass the actual search query to the API
         _currentPage,
       );
-      _results.addAll(response.results);
+      _results = response.results;
       _hasMoreResults = response.results.isNotEmpty;
     } catch (e) {
       _hasMoreResults = false;
@@ -64,13 +66,5 @@ class SearchProvider extends ChangeNotifier {
 
     _isLoading = false;
     notifyListeners();
-  }
-
-  // Call this method to listen for scroll position
-  void onScroll() {
-    if (scrollController.position.pixels ==
-        scrollController.position.maxScrollExtent) {
-      loadMoreResults();
-    }
   }
 }
