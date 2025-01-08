@@ -1,0 +1,89 @@
+# Miscellaneous
+search_app/*.class
+search_app/*.log
+search_app/*.pyc
+search_app/*.swp
+search_app/.DS_Store
+search_app/.atom/
+search_app/.build/
+search_app/.buildlog/
+search_app/.history
+search_app/.svn/
+search_app/.swiftpm/
+search_app/migrate_working_dir/
+
+# IntelliJ related
+search_app/*.iml
+search_app/*.imlpr
+search_app/*.imlws
+search_app/*.iml.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+search_app/**/doc/api/
+search_app/**/ios/Flutter/.last_build_id
+search_app/.dart_tool/
+search_app/.flutter-plugins
+search_app/.flutter-plugins-dependencies
+search_app/.pub-cache/
+search_app/.pub/
+search_app//build/
+
+# Symbolication related
+search_app/app.*.symbols
+
+# Obfuscation related
+search_app/app.*.map.json
+
+# Android Studio will place build artifacts here
+search_app/android/app/debug
+search_app/android/app/profile
+search_app/android/app/release
+
+ConsolidatedSearchAPI/*.swp
+ConsolidatedSearchAPI/*.*~
+ConsolidatedSearchAPI/project.lock.json
+ConsolidatedSearchAPI/.DS_Store
+ConsolidatedSearchAPI/*.pyc
+ConsolidatedSearchAPI/nupkg/
+
+# Visual Studio Code
+ConsolidatedSearchAPI/.vscode/*
+
+# Rider
+ConsolidatedSearchAPI/.idea/
+ConsolidatedSearchAPI/
+# Visual Studio
+ConsolidatedSearchAPI/.vs/
+ConsolidatedSearchAPI/
+# Fleet
+ConsolidatedSearchAPI/.fleet/
+ConsolidatedSearchAPI/
+# Code Rush
+ConsolidatedSearchAPI/.cr/
+ConsolidatedSearchAPI/
+# User-specific files
+ConsolidatedSearchAPI/*.suo
+ConsolidatedSearchAPI/*.user
+ConsolidatedSearchAPI/*.userosscache
+ConsolidatedSearchAPI/*.sln.docstates
+ConsolidatedSearchAPI/
+# Build results
+ConsolidatedSearchAPI/[Dd]ebug/
+ConsolidatedSearchAPI/[Dd]ebugPublic/
+ConsolidatedSearchAPI/[Rr]elease/
+ConsolidatedSearchAPI/[Rr]eleases/
+ConsolidatedSearchAPI/x64/
+ConsolidatedSearchAPI/x86/
+ConsolidatedSearchAPI/build/
+ConsolidatedSearchAPI/bld/
+ConsolidatedSearchAPI/[Bb]in/
+ConsolidatedSearchAPI/[Oo]bj/
+ConsolidatedSearchAPI/[Oo]ut/
+ConsolidatedSearchAPI/msbuild.log
+ConsolidatedSearchAPI/msbuild.err
+ConsolidatedSearchAPI/msbuild.wrn
